@@ -7,6 +7,7 @@ import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [ cookies ] = useCookies([]);
   const navigate = useNavigate();
   const {data, isLoading, error, isError, isSuccess, mutate} = useMutation({
     mutationFn: async (user) => {
@@ -30,7 +31,6 @@ const Login = () => {
   if(isSuccess)
   {
     console.log("success boiiiiiii");
-    const [ cookies ] = useCookies([]);
     console.log(JSON.stringify(cookies));
     console.log(cookies.token);
     console.log("PLEASE WORK :(");

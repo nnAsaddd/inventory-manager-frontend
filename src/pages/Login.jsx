@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const {data, isLoading, error, isError, isSuccess, mutate} = useMutation({
     mutationFn: async (user) => {
-      await axios.post(
+      return await axios.post(
         "https://inventory-manager-fglv.onrender.com/api/v1/auth/login",
         user,
         {

@@ -21,9 +21,6 @@ const useLoginUser = () => {
   return useMutation({
     mutationFn: loginUser,
     onSuccess: () => {
-      toast.success("User Logged in successfully!!!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
       const [ cookies ] = useCookies([]);
       console.log(JSON.stringify(cookies));
       console.log(cookies.token);

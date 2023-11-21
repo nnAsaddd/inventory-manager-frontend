@@ -9,17 +9,23 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [ cookies ] = useCookies([]);
   const navigate = useNavigate();
-  const {data, isLoading, error, isError, isSuccess, mutate} = useMutation({
-    mutationFn: async (user) => {
-      return await axios.post(
-        "https://inventory-manager-fglv.onrender.com/api/v1/auth/login",
+
+  const { data, isLoading, error, isError, isSuccess, mutate } = useMutation({
+  mutationFn: async (user) => {
+    try {
+      const response = await axios.post(
+        `https://inventory-manager-fglv.onrender.com/api/v1/auth/login`,
         user,
         {
           withCredentials: true,
         }
-      )
+      );
+      return response; // Return the response object
+    } catch (err) {
+      throw err; // This will ensure that the error is caught by the error handling in useMutation
     }
-  });
+  },
+});
 
   const handleLoginUser = () => {
     mutate({ email, password });
@@ -37,6 +43,9 @@ const Login = () => {
       } else {
         console.log("Token cookie is not set");
       }
+    }else
+    {
+      console.log("login unsuc");
     }
   }, [isSuccess, cookies, navigate]);
   if(isError)

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -28,14 +28,16 @@ const Login = () => {
   };
 
   if (isLoading) return <h1>Loading...</h1>;
-  if(isSuccess)
-  {
-    console.log("success boiiiiiii");
-    console.log(JSON.stringify(cookies));
-    console.log(cookies.token);
-    console.log("PLEASE WORK :(");
-    navigate("/");
-  }
+  useEffect(()=>{
+    if(isSuccess)
+    {
+      console.log("success boiiiiiii");
+      console.log(JSON.stringify(cookies));
+      console.log(cookies.token);
+      console.log("PLEASE WORK :(");
+      navigate("/");
+    }
+  },[isSuccess]);
   if(isError)
   {
     console.log("error : " + error);

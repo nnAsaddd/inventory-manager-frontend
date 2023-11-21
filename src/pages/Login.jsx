@@ -36,7 +36,7 @@ const Login = () => {
   if (isLoading) return <h1>Loading...</h1>;
   useEffect(() => {
     if (isSuccess) {
-      console.log("success boiiiiiii");
+       console.log("Login successful", data);
       console.log("Cookies:", JSON.stringify(cookies));
       if (cookies.token) {
         navigate("/"); // Change this to the correct route for the products page

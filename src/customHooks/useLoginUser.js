@@ -17,7 +17,7 @@ const loginUser = async (user) => {
 
 const useLoginUser = () => {
   const navigate = useNavigate();
-
+  console.log("up");
   return useMutation({
     mutationFn: loginUser,
     onSuccess: () => {
@@ -31,6 +31,7 @@ const useLoginUser = () => {
       toast.error(error?.response?.data?.msg, {
         position: toast.POSITION.TOP_CENTER,
       });
+      console.log("below");
       navigate("/login");
     },
   });

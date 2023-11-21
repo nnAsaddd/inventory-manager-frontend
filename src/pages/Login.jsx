@@ -28,16 +28,17 @@ const Login = () => {
   };
 
   if (isLoading) return <h1>Loading...</h1>;
-  useEffect(()=>{
-    if(isSuccess)
-    {
+  useEffect(() => {
+    if (isSuccess) {
       console.log("success boiiiiiii");
-      console.log(JSON.stringify(cookies));
-      console.log(cookies.token);
-      console.log("PLEASE WORK :(");
-      navigate("/");
+      console.log("Cookies:", JSON.stringify(cookies));
+      if (cookies.token) {
+        navigate("/"); // Change this to the correct route for the products page
+      } else {
+        console.log("Token cookie is not set");
+      }
     }
-  },[isSuccess]);
+  }, [isSuccess, cookies, navigate]);
   if(isError)
   {
     console.log("error : " + error);

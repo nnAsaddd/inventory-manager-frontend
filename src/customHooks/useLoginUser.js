@@ -28,9 +28,7 @@ const useLoginUser = () => {
       navigate("/");
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.msg, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      console.log(error);
       console.log("below");
       navigate("/login");
     },

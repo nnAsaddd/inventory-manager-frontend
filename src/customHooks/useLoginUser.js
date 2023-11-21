@@ -24,9 +24,9 @@ const useLoginUser = () => {
       toast.success("User Logged in successfully!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
-      const [ cookie ] = useCookies([]);
-      console.log(JSON.stringify(cookie));
-      console.log(cookie.token);
+      const [ cookies ] = useCookies([]);
+      console.log(JSON.stringify(cookies));
+      console.log(cookies.token);
       console.log("PLEASE WORK :(");
       navigate("/");
     },

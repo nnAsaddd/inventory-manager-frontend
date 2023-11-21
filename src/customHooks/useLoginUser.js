@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const loginUser = async (user) => {
@@ -23,7 +23,6 @@ const useLoginUser = () => {
       toast.success("User Logged in successfully!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
-      <Navigate to="/" />;
       navigate("/");
     },
     onError: (error) => {

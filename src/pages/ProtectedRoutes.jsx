@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 const ProtectedRoutes = () => {
   const [cookies] = useCookies([]);
   const isValid = cookies.token;
-
+  console.log(isValid);
   // let user = null;
   // if (isValid) {
   //   try {
@@ -17,7 +17,7 @@ const ProtectedRoutes = () => {
   //     console.error("Error decoding token:", error);
   //   }
   // }
-
+  console.log("done");
   return isValid ? <Outlet /> : <Navigate to="/login" />;
 };
 

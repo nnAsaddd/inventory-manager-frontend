@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 const loginUser = async (user) => {
   const { data } = await axios.post(
@@ -23,6 +24,10 @@ const useLoginUser = () => {
       toast.success("User Logged in successfully!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
+      const [ cookie ] = useCookies([]);
+      console.log(JSON.stringify(cookie));
+      console.log(cookie.token);
+      console.log("PLEASE WORK :(");
       navigate("/");
     },
     onError: (error) => {

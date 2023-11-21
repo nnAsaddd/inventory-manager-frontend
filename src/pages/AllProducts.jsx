@@ -3,12 +3,22 @@ import { FaPlus } from "react-icons/fa";
 import { Loader, DisplayAllProducts, Form, Filters } from "../components";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../context/ProductsProvider";
-import useFetchProducts from "../customHooks/useFetchProducts";
+import { useQuery } from "@tanstack/react-query";
 
 const AllProducts = () => {
-  const { data, isLoading, isFetching, isError, error } = useFetchProducts();
+  const { data, isLoading, isFetching, isError, error } = useQuery({
+  queryKey: ["products"],
+  queryFn: async () => {
+    await axios.get(
+      `https://inventory-manager-fglv.onrender.com/api/v1/products`,
+      {
+        withCredentials: true,
+      }
+    )},
+  });
   const { sortBy, user, handleUser, handleSortBy } = useProductsContext();
-
+  console.log(data);
+  console.log(JSON.stringify(data));
   useEffect(() => {
     handleUser(data?.user);
   }, [data]);

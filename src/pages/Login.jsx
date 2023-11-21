@@ -29,7 +29,7 @@ const Login = () => {
   if (isLoading) return <h1>Loading...</h1>;
   if(isSuccess)
   {
-    console.log("success");
+    console.log("success boiiiiiii");
     const [ cookies ] = useCookies([]);
     console.log(JSON.stringify(cookies));
     console.log(cookies.token);

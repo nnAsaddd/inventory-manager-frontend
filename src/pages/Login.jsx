@@ -1,10 +1,19 @@
 import React, { useState } from "react";
-import useLoginUser from "../customHooks/useLoginUser";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isLoading, isError, error, mutate } = useLoginUser();
+  const {data, isLoading, error, isError, isSuccess, mutate} = useMutation({
+    mutationFn: async () => {
+      await axios.post(
+        "https://inventory-manager-fglv.onrender.com/api/v1/auth/login",
+        user,
+        {
+          withCredentials: true,
+        }
+      )
+    }
+  });
 
   const handleLoginUser = () => {
     mutate({ email, password });
@@ -13,7 +22,15 @@ const Login = () => {
   };
 
   if (isLoading) return <h1>Loading...</h1>;
-
+  if(isSuccess)
+  {
+    console.log("success");
+    navigate("/");
+  }
+  if(isError)
+  {
+    console.log("error : " + error);
+  }
   return (
     <div className="login">
       <div className="wrapper login-wrapper">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 
 const Login = () => {
@@ -29,6 +30,10 @@ const Login = () => {
   if(isSuccess)
   {
     console.log("success");
+    const [ cookies ] = useCookies([]);
+    console.log(JSON.stringify(cookies));
+    console.log(cookies.token);
+    console.log("PLEASE WORK :(");
     navigate("/");
   }
   if(isError)

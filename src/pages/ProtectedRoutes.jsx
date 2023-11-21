@@ -18,7 +18,7 @@ const ProtectedRoutes = () => {
   //   }
   // }
   console.log("done");
-  return isValid ? <Outlet /> : <Navigate to="/" />;
+  return isValid ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoutes;

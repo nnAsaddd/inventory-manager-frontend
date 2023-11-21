@@ -9,7 +9,7 @@ const AllProducts = () => {
   const { data, isLoading, isFetching, isError, error } = useQuery({
   queryKey: ["products"],
   queryFn: async () => {
-    await axios.get(
+    return await axios.get(
       `https://inventory-manager-fglv.onrender.com/api/v1/products`,
       {
         withCredentials: true,
